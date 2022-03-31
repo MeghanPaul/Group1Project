@@ -1,0 +1,55 @@
+<main class='card'>
+    <div class='tab'>
+        <button class="tablinks" onclick="openForm(event, 'Login')">Login</button>
+        <button class="tablinks" onclick="openForm(event, 'SignUp')">Sign Up</button>
+    </div>
+
+    <!-- Login Tab -->
+    <div id="Login" class='w50 tabcontent'>
+        <form class='login-form grow1'>
+            <div class='flex column'>
+                <div class='flex column m1'>
+                    <label htmlFor='email'>Email</label>
+                    <input type='email' name='email' class='input' id='email-login'/>
+                </div>
+                <div class='flex column m1'>
+                    <label htmlFor='email'>Password</label>
+                    <input type='password' name='password' class='input' id='password-login'/>
+                </div>
+            <div class='m1'>
+                <button type='submit' class='btn bg-blue white p1 rounded'>Submit</button>
+            </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Sign Up Tab -->
+    <div id="SignUp" class='w50 tabcontent'>
+        <form class='signup-form grow1'>
+            <div class='flex column'>
+                <div class='flex column m1'>
+                    <label htmlFor='username'>Username</label>
+                    <input type='text' name='username' class='input' id='username-signup'/>
+                </div>
+                <div class='flex column m1'>
+                    <label htmlFor='email'>Email</label>
+                    <input type='email' name='email' class='input' id='email-signup'/>
+                </div>
+                <div class='flex column m1'>
+                    <label htmlFor='password'>Create Password</label>
+                    <input type='password' name='password' class='input' id='password-signup1'/>
+                </div>
+                <div class='flex column m1'>
+                    <label htmlFor='reenter'>Verify Password</label>
+                    <input type='password' name='reenter' class='input' id='password-signup2'/>
+                </div>
+            <div class='m1'>
+                <button type='submit' class='btn bg-blue white p1 rounded'>Submit</button>
+            </div>
+            </div>
+        </form>
+    </div>
+
+</main>
+
+<script src="/js/login.js"></script>
