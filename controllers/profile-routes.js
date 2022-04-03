@@ -1,19 +1,20 @@
 const router = require("express").Router();
 // const withAuth = require("../utils/auth");
-const { Post } = require("../models");
+const { Product } = require("../models");
 // const sequelize = require("../config/connection");
 
 router.get("/", (req, res) => {
   console.log(req.session);
-  Post.findAll({
+  Product.findAll({
     where: {
       user_id: req.session.user.id,
     },
-    attributes: ["id", "title", "post_url"],
+    attributes: ["id", "title", "description", "price", "img_link"],
   })
     .then((dbPostData) => {
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render("profile", { posts });
+      const products = dbPostData.map((post) => post.get({ plain: true }));
+      console.log({ products });
+      res.render("profile", { products });
     })
     .catch((err) => {
       console.log(err);
