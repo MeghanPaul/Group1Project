@@ -35,7 +35,7 @@ Product.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            // allowNull: false,
             references: {
                 model: 'user',
                 key: 'id'
@@ -44,6 +44,7 @@ Product.init(
     },
     {
         sequelize,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'product'
