@@ -6,6 +6,6 @@ const profileRoutes = require("./profile-routes");
 
 router.use("/", homeRoutes);
 router.use("/api", apiRoutes);
-router.arguments("/profile", profileRoutes);
+router.use("/profile", profileRoutes);
 
 module.exports = router;
