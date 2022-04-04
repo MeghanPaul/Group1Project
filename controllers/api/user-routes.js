@@ -1,6 +1,18 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
+// GET users (for testing)
+router.get("/", (req, res) => {
+  User.findAll({
+    attributes: ["id", "username", "email", "password"],
+  })
+    .then((dbUserData) => res.json(dbUserData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // CREATE new user
 router.post("/", async (req, res) => {
   try {

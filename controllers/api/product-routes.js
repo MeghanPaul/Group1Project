@@ -66,16 +66,15 @@ router.get("/", (req, res) => {
 //   }
 // });
 
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Product.create({
     title: req.body.title,
     description: req.body.description,
     price: req.body.price,
     img_link: req.body.img_link,
-    user_id: req.body.user_id,
+    user_id: req.session.user.id,
   })
     .then((dbProductData) => {
-      console.log(dbProductData);
       res.json(dbProductData);
     })
     .catch((err) => {
