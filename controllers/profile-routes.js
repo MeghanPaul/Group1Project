@@ -13,11 +13,30 @@ router.get("/", (req, res) => {
   })
     .then((dbPostData) => {
       const products = dbPostData.map((post) => post.get({ plain: true }));
-      console.log({ products });
       res.render("profile", { products });
     })
     .catch((err) => {
       console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/edit/:id", (req, res) => {
+  Product.findByPk(req.params.id, {
+    attributes: ["title", "description", "price", "img_link"],
+  })
+    .then((dbProductData) => {
+      if (dbProductData) {
+        const product = dbProductData.get({ plain: true });
+
+        res.render("edit-product", {
+          product,
+        });
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch((err) => {
       res.status(500).json(err);
     });
 });
