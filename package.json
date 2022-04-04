@@ -4,7 +4,8 @@
   "description": "File structure and assets for Fullstack Codealong",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:start": "nodemon server.js"
   },
   "author": "A. Haldy",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "express-handlebars": "^6.0.3",
     "express-session": "^1.17.2",
     "handlebars": "^4.7.7",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15"
   }
 }
