@@ -1,10 +1,22 @@
 <main>
-    <div class='w100 flex column align-items-center'>
-        <h3>Welcome, {{user.username}}!</h3>
-        <p>You are now logged in.</p>
-        <p>Enjoy this wonderfull app!</p>
-        <button id="logout">Log out</button>
-    </div>
+  <div class="w100 flex column align-items-center">
+    <h3>Welcome, {{user.username}}!</h3>
+    <p>You are now logged in.</p>
+    <p>Enjoy this wonderfull app!</p>
+    <button id="logout">Log out</button>
+  </div>
+
+  <div>
+   <ol> 
+    {{#each products}}
+    <li>
+      {{> product-info this}}
+    </li>
+      <br / >
+      <br / >
+    {{/each}}
+  </ol>
+  </div>
 </main>
 
 <script src="/js/logout.js"></script>
