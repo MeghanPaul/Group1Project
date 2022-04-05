@@ -28,6 +28,7 @@
     {{#each products}}
     <li>
       {{> product-info this}}
+      <a href="/profile/edit/{{this.id}}" class="edit-link">Edit post</a>
     </li>
     {{/each}}
   </ol>
