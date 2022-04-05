@@ -1,11 +1,11 @@
- INSERT INTO user (username, email, password, first_name, last_name)
+ INSERT INTO user (username, email, password)
  VALUES
-    ('newUser', 'newu@email.com', '123456', 'Tom', 'Shane'),
-    ('tigerlover', 'tigerlove@email.com', 'abcdef', 'Carol', 'Baskin'),
-    ('tigerlover1', 'exotictigers@email.com', 'tiger1', 'Joe', 'Exotic'),
-    ('lilcoder', 'coder1@email.com','bcrypt', 'Jane', 'Doe'),
-    ('codeman', 'codeheaven@email.com', 'nodejs', 'John', 'Smith'),
-    ('secretagent', 'bondwannabe@email.com', 'agent007', 'Johnny', 'English');
+    ('newUser', 'newu@email.com', '123456'),
+    ('tigerlover', 'tigerlove@email.com', 'abcdef'),
+    ('tigerlover1', 'exotictigers@email.com', 'tiger1'),
+    ('lilcoder', 'coder1@email.com','bcrypt'),
+    ('codeman', 'codeheaven@email.com', 'nodejs'),
+    ('secretagent', 'bondwannabe@email.com', 'agent007');
 
 INSERT INTO product (title, description, price, img_link, user_id)
 VALUES
