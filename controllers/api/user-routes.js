@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
     const dbUserData = await User.create({
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password1,
+      password: req.body.password,
     });
 
     // Set up sessions with a 'loggedIn' variable set to `true`
