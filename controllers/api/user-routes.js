@@ -16,10 +16,11 @@ router.get("/", (req, res) => {
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
+    console.log(req.body);
     await User.create({
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password,
+      password: req.body.password1,
     }).then((dbUserData) => {
       // Set up sessions with a 'loggedIn' variable set to `true`
       req.session.save(() => {
