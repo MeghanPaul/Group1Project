@@ -22,49 +22,49 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/:filter", async (req, res) => {
-  //theorhetical attribute names
-  const attributes = ["img_link", "title", "description", "price", "user_id"];
+// router.get("/:filter", async (req, res) => {
+//   //theorhetical attribute names
+//   const attributes = ["img_link", "title", "description", "price", "user_id"];
 
-  try {
-    if (req.params.filter == "sortByVotes") {
-      const dbProductData = await Product.findAll({
-        include: [
-          {
-            model: Product,
-            attributes: [],
-            order: sequelize.literal("votes", "DESC"),
-          },
-        ],
-      });
-    } else if (req.params.filter == "sortByRecent") {
-      const dbProductData = await Product.findAll({
-        include: [
-          {
-            model: Product,
-            attributes: [],
-            order: sequelize.literal("creation_at", "DESC"),
-          },
-        ],
-      });
-    } else {
-      throw new Error("Invalid Route");
-    }
+//   try {
+//     if (req.params.filter == "sortByVotes") {
+//       const dbProductData = await Product.findAll({
+//         include: [
+//           {
+//             model: Product,
+//             attributes: [],
+//             order: sequelize.literal("votes", "DESC"),
+//           },
+//         ],
+//       });
+//     } else if (req.params.filter == "sortByRecent") {
+//       const dbProductData = await Product.findAll({
+//         include: [
+//           {
+//             model: Product,
+//             attributes: [],
+//             order: sequelize.literal("creation_at", "DESC"),
+//           },
+//         ],
+//       });
+//     } else {
+//       throw new Error("Invalid Route");
+//     }
 
-    const productPage = dbProductData.map((product) => {
-      product.get({ plain: true });
-    });
+//     const productPage = dbProductData.map((product) => {
+//       product.get({ plain: true });
+//     });
 
-    res.render("home", {
-      productPage,
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.log(err);
-    //status 500 -> server error, server doesn't know how to handle the route
-    res.status(500).json(err);
-  }
-});
+//     res.render("home", {
+//       productPage,
+//       loggedIn: req.session.loggedIn,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     //status 500 -> server error, server doesn't know how to handle the route
+//     res.status(500).json(err);
+//   }
+// });
 
 router.post("/", withAuth, (req, res) => {
   Product.create({
