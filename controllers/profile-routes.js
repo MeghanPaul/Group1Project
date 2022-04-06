@@ -4,7 +4,6 @@ const { Product } = require("../models");
 // const sequelize = require("../config/connection");
 
 router.get("/", (req, res) => {
-  console.log(req.session);
   Product.findAll({
     where: {
       user_id: req.session.user.id,
