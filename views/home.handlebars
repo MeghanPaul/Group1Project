@@ -11,6 +11,7 @@
     {{#each products}}
     <li class="list-group-item">
       {{> product-info}}
+      <a href="/api/products/{{this.id}}" >Comment or upvote on this post!</a>
     </li>
     {{/each}}
    </ul>
