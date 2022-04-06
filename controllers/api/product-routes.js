@@ -2,13 +2,17 @@ const router = require("express").Router();
 const withAuth = require("../../utils/auth");
 
 //Theorhetical spaceholders for product model
-const { Product } = require("../../models");
+const { Product, Comment } = require("../../models");
 const sequelize = require("sequelize");
 
 //GET for the products homepage
 router.get("/", (req, res) => {
   Product.findAll({
     attributes: ["id", "title", "description", "price", "img_link"],
+    includes: {
+      model: Comment,
+      attributes: ["id", "text", "post_id", "user_id", "created_at"],
+    },
   })
     .then((dbProductData) => {
       const products = dbProductData.map((product) =>
