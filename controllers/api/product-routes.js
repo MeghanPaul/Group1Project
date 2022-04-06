@@ -11,15 +11,14 @@ router.get("/", (req, res) => {
     attributes: ["id", "title", "description", "price", "img_link"],
     include: {
       model: Comment,
-      attributes: ["id", "text", "user_id", "post_id", "created_at"],
+      attributes: ["id", "text", "user_id", "product_id", "created_at"],
     },
   })
     .then((dbProductData) => {
       const products = dbProductData.map((product) =>
         product.get({ plain: true })
       );
-      // res.render("home", { products });
-      res.json(dbProductData);
+      res.render("home", { products });
     })
     .catch((err) => {
       console.log(err);
@@ -32,6 +31,10 @@ router.get("/:id", (req, res) => {
       id: req.params.id,
     },
     attributes: ["id", "title", "description", "price", "img_link"],
+    include: {
+      model: Comment,
+      attributes: ["id", "text", "user_id", "product_id", "created_at"],
+    },
   })
     .then((dbProductData) => {
       if (!dbProductData) {
