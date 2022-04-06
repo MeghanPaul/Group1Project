@@ -21,6 +21,26 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
+router.get("/:id", (req, res) => {
+  Product.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ["id", "title", "description", "price", "img_link"],
+  })
+    .then((dbProductData) => {
+      if (!dbProductData) {
+        res.status(404).json({ message: "No product found with this id" });
+        return;
+      }
+      const products = dbProductData.get({ plain: true });
+      res.render("single-page", { products });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 // router.get("/:filter", async (req, res) => {
 //   //theorhetical attribute names
