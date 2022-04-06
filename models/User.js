@@ -37,12 +37,12 @@ User.init(
     },
     first_name: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
     },
     last_name: {
       type: DataTypes.STRING,
-      allowNull: true
-    }
+      allowNull: true,
+    },
   },
   {
     hooks: {

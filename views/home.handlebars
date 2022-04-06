@@ -11,9 +11,12 @@
     <li>
       {{#each products}}
       {{> product-info this}}
-      {{/each}}
-    </li>    
-   </ol>
+      <a href="/api/products/{{this.id}}" >Comment or upvote on this post!</a>
+    </li>
+      <br / >
+      <br / >
+    {{/each}}
+  </ol>
   </div>
 </main>
 
