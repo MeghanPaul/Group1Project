@@ -1,5 +1,5 @@
-<section>
-  <div class='flex column'>
+<section class="row">
+  {{!-- <div class='flex column'>
     <div class='flex column m1'>
       <label htmlFor='username'>Username</label>
       <input type='text' name='username' class='input' id='username-signup'/>
@@ -23,40 +23,46 @@
     <div class='m1'>
       <button type='submit' class='btn bg-blue white p1 rounded'>Submit</button>
     </div>
+  </div> --}}
+  <div class="col-sm-12 col-md-6">
+    <h3 class="text-dark">Post a Product</h3>
+    <form class="new-product-form flex column bg-light border rounded">
+      <div class='flex column m1'>
+        <label for="product-title">Title</label>
+        <input type="text" id="product-title" name="product-title" class="input"/>
+      </div>
+      <div class='flex column m1'>
+        <label for="product-description">Description</label>
+        <input type="text" id="product-description" name="product-description" class="input"/>
+      </div>
+      <div class='flex column m1'>
+        <label for="product-price">Price</label>
+        <input type="text" id="product-price" name="product-price" class="input"/>
+      </div>
+      <div class='flex column m1'>
+        <label for="product-url">Image Link</label>
+        <input id="product-url" name="product-url" class="input"/>
+      </div>
+      <div class='m1'>
+        <button type="submit" class="btn bg-dark text-white">Create</button>
+      </div>
+    </form>
   </div>
 
-  <form class="new-product-form">
-    <div>
-      <label for="product-title">Title</label>
-      <input type="text" id="product-title" name="product-title" />
-    </div>
-     <div>
-      <label for="product-description">Description</label>
-      <input type="text" id="product-description" name="product-description" />
-    </div>
-      <div>
-      <label for="product-price">Price</label>
-      <input type="text" id="product-price" name="product-price" />
-    </div>
-    <div>
-      <label for="product-url">Image Link</label>
-      <input id="product-url" name="product-url" />
-    </div>
-    <button type="submit" class="btn">Create</button>
-  </form>
+  <div class="col-sm-12 col-md-6">
+    <h3>Your products</h3>
+    <ul class="list-group">
+      {{#each products}}
+      <li class="list-group-item bg-light">
+        {{> product-info this}}
+        <a href="/profile/edit/{{this.id}}" class="edit-link btn bg-dark text-white mt-2">Edit post</a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  
 </section>
 
-<section>
-  <h2>Your products</h2>
-  <ol>
-    {{#each products}}
-    <li>
-      {{> product-info this}}
-      <a href="/profile/edit/{{this.id}}" class="edit-link">Edit post</a>
-    </li>
-    {{/each}}
-  </ol>
-</section>
 <script src="/js/add-product.js"></script>
 
 
