@@ -13,48 +13,48 @@ Post.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-User.belongsToMany(Post, {
+User.belongsToMany(Product, {
     through: Vote,
-    as: 'voted_posts',
+    as: 'voted_products',
     foreignKey: 'user_id'
 });
 
-Post.belongsToMany(User, {
+Product.belongsToMany(User, {
     through: Vote,
-    as: 'voted_posts',
-    foreignKey: 'post_id'
+    as: 'voted_products',
+    foreignKey: 'product_id'
 });
 
 Vote.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-Vote.belongsTo(Post, {
-    foreignKey: 'post_id'
+Vote.belongsTo(Product, {
+    foreignKey: 'product_id'
 });
 
 User.hasMany(Vote, {
     foreignKey: 'user_id'
 });
 
-Post.hasMany(Vote, {
-    foreignKey: 'post_id'
+Product.hasMany(Vote, {
+    foreignKey: 'product_id'
 });
 
 Comment.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-Comment.belongsTo(Post, {
-    foreignKey: 'post_id'
+Comment.belongsTo(Product, {
+    foreignKey: 'product_id'
 });
 
 User.hasMany(Comment, {
     foreignKey: 'user_id'
 });
 
-Post.hasMany(Comment, {
-    foreignKey: 'post_id'
+Product.hasMany(Comment, {
+    foreignKey: 'product_id'
 });
 
 User.hasMany(Product, {
