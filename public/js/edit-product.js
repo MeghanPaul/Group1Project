@@ -1,4 +1,4 @@
-import {uploadImg} from './image-storage';
+import uploadImg from '../../utils/image-storage.js';
 
 async function editProductHandler(event) {
   event.preventDefault();

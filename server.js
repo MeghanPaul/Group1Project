@@ -1,20 +1,28 @@
 // server and route variables
-const express = require("express");
-const path = require("path");
-const routes = require("./controllers");
+import express from 'express';
+import path from 'path';
+import routes from './controllers/index.js'
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // handlebars and helper variables
-const exphbs = require("express-handlebars");
+import exphbs from 'express-handlebars';
 const hbs = exphbs.create({});
-require("dotenv").config();
+import dotenv from 'dotenv';
+dotenv.config();
 // const helpers = require('./utils/helpers');
 
+import {fileURLToPath} from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // sequelize and session variables
-const sequelize = require("./config/connection");
-const session = require("express-session");
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
+import sequelize from './config/connection.js';
+import session from 'express-session';
+import sequelize_store from 'connect-session-sequelize';
+const SequelizeStore = sequelize_store(session.Store);
+
+//const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sess = {
   secret: process.env.APP_SECRET,
   cookie: {},

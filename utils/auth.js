@@ -10,4 +10,4 @@ const withAuth = (req, res, next) => {
     }
   };
   
-  module.exports = withAuth;
+export {withAuth as default};

@@ -1,9 +1,11 @@
-const router = require("express").Router();
-const withAuth = require("../../utils/auth");
+import express from 'express';
+let router = express.Router();
+import withAuth from '../../utils/auth.js';
 
 //Theorhetical spaceholders for product model
-const { Product, Comment } = require("../../models");
-const sequelize = require("sequelize");
+import Comment from '../../models/Comment.js';
+import Product from '../../models/Product.js';
+import sequelize from 'sequelize';
 
 //GET for the products homepage
 router.get("/", (req, res) => {
@@ -151,4 +153,4 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-module.exports = router;
+export {router as default};

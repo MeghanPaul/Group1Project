@@ -1,6 +1,7 @@
-const router = require("express").Router();
+import express from 'express';
+let router = express.Router();
 // const withAuth = require("../utils/auth");
-const { Product } = require("../models");
+import Product from '../models/Product.js';
 // const sequelize = require("../config/connection");
 
 router.get("/", (req, res) => {
@@ -40,4 +41,4 @@ router.get("/edit/:id", (req, res) => {
     });
 });
 
-module.exports = router;
+export {router as default};

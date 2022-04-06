@@ -1,5 +1,6 @@
-const router = require('express').Router();
-const withAuth = require('../utils/auth');
+import express from 'express';
+let router = express.Router();
+import withAuth from '../utils/auth.js';
 
 router.get('/', withAuth, (req, res) => {
   res.render('home', { user: req.session.user });
@@ -13,4 +14,4 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-module.exports = router;
+export {router as default};
