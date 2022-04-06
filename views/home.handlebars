@@ -1,19 +1,19 @@
 <main>
   <div class="w100 flex column align-items-center">
     <h3>Welcome, {{user.username}}!</h3>
-    <p>You are now logged in.</p>
-    <p>Enjoy this wonderful app!</p>
-    <button id="logout">Log out</button>
+    <p class="text-dark">You are now logged in.</p>
+    <p class="text-dark">Enjoy this wonderful app!</p>
+    <button id="logout" class="bg-dark text-white">Log out</button>
   </div>
 
   <div>
-   <ol> 
-    <li>
-      {{#each products}}
-      {{> product-info this}}
-      {{/each}}
-    </li>    
-   </ol>
+   <ul class="list-group"> 
+    {{#each products}}
+    <li class="list-group-item">
+      {{> product-info}}
+    </li>
+    {{/each}}
+   </ul>
   </div>
 </main>
 
