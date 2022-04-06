@@ -1,4 +1,4 @@
-import uploadImg from '../../utils/image-storage.js';
+//import uploadImg from '../../utils/image-storage.js';
 
 async function editProductHandler(event) {
   event.preventDefault();
@@ -11,13 +11,26 @@ async function editProductHandler(event) {
   const price = document
     .querySelector('input[name="edit-product-price"]')
     .value.trim();
-  const file = document.querySelector('input[name="edit-product-img"]').value();
+  const file = document.querySelector('input[name="edit-product-img"]').value;
   const userId = document.querySelector('input[name="edit-product-img"]').getAttribute('meta_user');
-  const img_link = uploadImg(userId, title, file);
 
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
+
+  /* const uploadImg = await fetch(`/utils/image-storage.js`, {
+    method: 'POST',
+    body: {
+      "file": file,
+      "userId" userId,
+    }
+  });
+  if(uploadImg.ok) {
+    img_link = uploadImg.JSON.stringify();
+    console.log('Image uploaded successfully');
+  }else {
+    alert(uploadImg.statusText);
+  } */
 
   const response = await fetch(`/api/products/${id}`, {
     method: "PUT",
