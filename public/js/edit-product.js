@@ -11,7 +11,7 @@ async function editProductHandler(event) {
     .querySelector('input[name="edit-product-price"]')
     .value.trim();
   const img_link = document
-    .querySelector('input[name="edit-product-img_link"]')
+    .querySelector('input[name="edit-product-img-link"]')
     .value.trim();
 
   const id = window.location.toString().split("/")[
