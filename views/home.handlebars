@@ -2,21 +2,18 @@
   <div class="w100 flex column align-items-center">
     <h3>Welcome, {{user.username}}!</h3>
     <p>You are now logged in.</p>
-    <p>Enjoy this wonderfull app!</p>
+    <p>Enjoy this wonderful app!</p>
     <button id="logout">Log out</button>
   </div>
 
   <div>
    <ol> 
-     
-    {{#each products}}
     <li>
+      {{#each products}}
       {{> product-info this}}
-    </li>
-      <br / >
-      <br / >
-    {{/each}}
-  </ol>
+      {{/each}}
+    </li>    
+   </ol>
   </div>
 </main>
 

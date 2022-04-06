@@ -1,0 +1,50 @@
+<article>
+  <a href="/profile"> &larr; Back to profile</a>
+  <h2>
+    Edit Product
+  </h2>
+  <form class="edit-product-form">
+    <div>
+      <label for="product-title">Title</label>
+      <input
+        name="edit-product-title"
+        id="product-title"
+        type="text"
+        value="{{product.title}}"
+      />
+    </div>
+    <div>
+      <label for="product-description">Description</label>
+      <input
+        name="edit-product-description"
+        id="product-description"
+        type="text"
+        value="{{product.description}}"
+      />
+    </div>
+    <div>
+      <label for="product-price">Price</label>
+      <input
+        name="edit-product-price"
+        id="product-price"
+        type="text"
+        value="{{product.price}}"
+      />
+    </div>
+    <div>
+      <label for="product-img_link">Image Link</label>
+      <input
+        name="edit-product-img_link"
+        id="product-img_link"
+        type="text"
+        value="{{product.img_link}}"
+      />
+    </div>
+    <button type="submit" class="save-product-btn">Save product</button>
+    <button type="button" class="delete-product-btn">Delete product</button>
+  </form>
+</article>
+<form class="comment-form">
+</form>
+<script src="/js/delete-product.js"></script>
+<script src="/js/edit-product.js"></script>
