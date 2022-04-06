@@ -31,7 +31,7 @@ VALUES
     ('Spy Goods', 'www.agent.com', 6, 8),
     ('Every Spy needs this!', 'www.watch.com', 6, 9);
 
-INSERT INTO comment (text, user_id, post_id)
+INSERT INTO comment (text, user_id, product_id)
 VALUES
     ('This chain looks fake', 3, 1),
     ('Is this gold plated brass?', 5, 1),
@@ -48,7 +48,7 @@ VALUES
     ('It is totally worth it', 6, 8),
     ('This would startle my kitties!', 2, 9);
 
-INSERT INTO vote (user_id, post_id)
+INSERT INTO vote (user_id, product_id)
 VALUES
     (6, 2),
     (2, 4),
