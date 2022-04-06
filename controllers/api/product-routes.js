@@ -9,16 +9,17 @@ const sequelize = require("sequelize");
 router.get("/", (req, res) => {
   Product.findAll({
     attributes: ["id", "title", "description", "price", "img_link"],
-    includes: {
+    include: {
       model: Comment,
-      attributes: ["id", "text", "post_id", "user_id", "created_at"],
+      attributes: ["id", "text", "user_id", "post_id", "created_at"],
     },
   })
     .then((dbProductData) => {
       const products = dbProductData.map((product) =>
         product.get({ plain: true })
       );
-      res.render("home", { products });
+      // res.render("home", { products });
+      res.json(dbProductData);
     })
     .catch((err) => {
       console.log(err);
