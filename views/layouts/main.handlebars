@@ -4,11 +4,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop</title>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
+   <nav> 
+    <a href="/">Shop</a>
+    <ul>
+      <li>
+        <a href="/profile">Profile</a>
+      </li>
+      <li>
+        {{#if loggedIn}}
+        <button id="logout">Logout</button>
+        {{else}}  
+        <a href="/login">Login/SignUp</a>
+      </il>
+    </ul>
+  </nav>
     <div class='h70 w100 p4-top flex column align-items-center'>
       <header class="flex">
           <h1>Let's Shop</h1>
