@@ -13,6 +13,9 @@
       {{> product-info}}
       <a href="/api/products/{{this.id}}" >Comment or upvote on this post!</a>
     </li>
+      <br / >
+      <br / >
+      {{> comments products.comments}}
     {{/each}}
    </ul>
   </div>
