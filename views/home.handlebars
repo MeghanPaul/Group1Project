@@ -8,9 +8,8 @@
 
   <div>
    <ol> 
-     
-    {{#each products}}
     <li>
+      {{#each products}}
       {{> product-info this}}
       <a href="/api/products/{{this.id}}" >Comment or upvote on this post!</a>
     </li>
