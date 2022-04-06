@@ -14,7 +14,6 @@ router.get("/", (req, res) => {
       const products = dbProductData.map((product) =>
         product.get({ plain: true })
       );
-
       res.render("home", { products });
     })
     .catch((err) => {
