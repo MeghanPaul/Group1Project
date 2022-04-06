@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 
 router.get("/edit/:id", (req, res) => {
   Product.findByPk(req.params.id, {
-    attributes: ["title", "description", "price", "img_link"],
+    attributes: ["title", "description", "price", "img_link","user_id"],
   })
     .then((dbProductData) => {
       if (dbProductData) {

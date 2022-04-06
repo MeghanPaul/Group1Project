@@ -32,8 +32,8 @@
       />
     </div>
     <div>
-      <label for='img-link'>Select Image to Upload</label>
-      <input type='file' id='img-link' name='edit-product-img-link' accept='image/*' capture='environment' value='{{product.img_link}}'/>
+      <label for='img'>Select Image to Upload</label>
+      <input type='file' id='img' name='edit-product-img' accept='image/*' capture='environment' meta_user={{product.user_id}} {{!-- value={{product.img_link}} --}}/>
     </div>
     <button type="submit" class="save-product-btn">Save product</button>
     <button type="button" class="delete-product-btn">Delete product</button>

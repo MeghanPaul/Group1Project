@@ -1,6 +1,7 @@
+import {uploadImg} from './image-storage';
+
 async function editProductHandler(event) {
   event.preventDefault();
-
   const title = document
     .querySelector('input[name="edit-product-title"]')
     .value.trim();
@@ -10,9 +11,9 @@ async function editProductHandler(event) {
   const price = document
     .querySelector('input[name="edit-product-price"]')
     .value.trim();
-  const img_link = document
-    .querySelector('input[name="edit-product-img-link"]')
-    .value.trim();
+  const file = document.querySelector('input[name="edit-product-img"]').value();
+  const userId = document.querySelector('input[name="edit-product-img"]').getAttribute('meta_user');
+  const img_link = uploadImg(userId, title, file);
 
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1

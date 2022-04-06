@@ -14,9 +14,11 @@ const storage = getStorage(firebaseApp);
 
 const storageRef = ref(storage);
 
-async function uploadImage(user,title) {
-    const imgRef = ref(storageRef, `${user}/${title}`);
-    const uploadTask = uploadBytesResumable(imgRef,file,metadata);
+export async function uploadImg(user,title,file) {
+    const filePath = `${user}/${title}`;
+    const imgRef = ref(storageRef, filePath);
+    const uploadTask = uploadBytesResumable(imgRef,file);
+    console.log('firebase file path: ' + filePath);
 
     uploadTask.on('state_changed',
     (snapshot) => {
@@ -55,5 +57,5 @@ async function uploadImage(user,title) {
     });
 } 
 
-{/* <label for='img'>Select Image to Upload</label>
-<input type='file' id='img' name='image' accept='image/*' capture='environment'/> */}
+/* <label for='img'>Select Image to Upload</label>
+<input type='file' id='img' name='image' accept='image/*' capture='environment'/> */
