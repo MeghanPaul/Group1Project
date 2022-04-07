@@ -1,20 +1,18 @@
 <main>
- {{#if loggedIn}}
+
   <div class="w100 flex column align-items-center">
     <h3>Welcome {{user.username}}!</h3>
     <p class="text-dark">You are now logged in.</p>
     <p class="text-dark">Enjoy this wonderful app!</p>
   </div>
-  {{/if}}
+ 
 
   <div>
    <ul class="list-group"> 
     {{#each products}}
     <li class="list-group-item">
       {{> product-info}}
-      
       <a href="/api/products/{{this.id}}" >Comment or upvote on this post!</a>
-      
     </li>
       <br / >
       <br / >
@@ -23,6 +21,5 @@
    </ul>
   </div>
 </main>
-{{#if loggedIn}}
+
 <script src="/js/logout.js"></script>
-{{/if}}

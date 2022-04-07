@@ -16,7 +16,6 @@ router.get("/", (req, res) => {
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
-    console.log(req.body);
     await User.create({
       username: req.body.username,
       email: req.body.email,
@@ -50,7 +49,7 @@ router.post("/login", async (req, res) => {
 
     if (!dbUserData) {
       res
-        .status(400)
+        .status(404)
         .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
@@ -64,6 +63,7 @@ router.post("/login", async (req, res) => {
       return;
     }
     const user = dbUserData.get({ plain: true });
+
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
       req.session.loggedIn = true;
