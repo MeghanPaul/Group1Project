@@ -1,12 +1,12 @@
-import express from 'express';
+import express from "express";
 let router = express.Router();
-import withAuth from '../../utils/auth.js';
+import withAuth from "../../utils/auth.js";
 
 //Theorhetical spaceholders for product model
-import Comment from '../../models/Comment.js';
-import Product from '../../models/Product.js';
-import sequelize from 'sequelize';
-
+import Comment from "../../models/Comment.js";
+import Product from "../../models/Product.js";
+import sequelize from "sequelize";
+import { uploadImg } from "../../utils/image-storage.js";
 //GET for the products homepage
 router.get("/", (req, res) => {
   Product.findAll({
@@ -109,7 +109,20 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
+router.post("/image", withAuth, (req, res) => {
+  uploadImg(req.body.userId, req.body.title, req.body.file)
+    .then((img_link) => {
+      res.json(img_link);
+    })
+    .catch((err) => {
+      console.log(err);
+      //server error code
+      res.status(500).json(err);
+    });
+});
+
 router.put("/:id", withAuth, (req, res) => {
+  //if newfile different
   Product.update(
     {
       title: req.body.title,
@@ -153,4 +166,4 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-export {router as default};
+export { router as default };

@@ -1,5 +1,3 @@
-//import uploadImg from '../../utils/image-storage.js';
-
 async function editProductHandler(event) {
   event.preventDefault();
   const title = document
@@ -18,19 +16,14 @@ async function editProductHandler(event) {
     window.location.toString().split("/").length - 1
   ];
 
-  /* const uploadImg = await fetch(`/utils/image-storage.js`, {
-    method: 'POST',
-    body: {
-      "file": file,
-      "userId" userId,
-    }
+  const img_link = await fetch(`api/products/image`, {
+    method: "POST",
+    body: JSON.stringify({
+      file,
+      userId,
+      title
+    })
   });
-  if(uploadImg.ok) {
-    img_link = uploadImg.JSON.stringify();
-    console.log('Image uploaded successfully');
-  }else {
-    alert(uploadImg.statusText);
-  } */
 
   const response = await fetch(`/api/products/${id}`, {
     method: "PUT",

@@ -1,11 +1,11 @@
 import dotenv from "dotenv";
 dotenv.config();
-import initializeApp from "firebase/app";
+import {initializeApp} from "firebase/app";
 import {
   getStorage,
   ref,
   uploadBytesResumable,
-  getDownloadUrl,
+  getDownloadURL,
 } from "firebase/storage";
 
 const firebaseConfig = {
@@ -59,8 +59,14 @@ export async function uploadImg(user, title, file) {
     },
     () => {
       //Upload successful
-      getDownloadUrl(uploadTask.snapshot.ref).then((downloadURL) => {
+      const downloadURL = new Promise((res,rej) => {
+        res(getDownloadUrl(uploadTask.snapshot.ref));
+      });
+
+      downloadURL
+      .then((url)=>{
         console.log("File stored at " + downloadURL);
+        return(downloadURL);
       });
     }
   );
