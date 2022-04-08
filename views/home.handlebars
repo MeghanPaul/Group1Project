@@ -1,22 +1,23 @@
 <main>
-  <div class="w100 flex column align-items-center">
-    <h3>Welcome, {{user.username}}!</h3>
-    <p>You are now logged in.</p>
-    <p>Enjoy this wonderful app!</p>
-    <button id="logout">Log out</button>
+  <div class="container-fluid flex column align-items-center">
+    <h3>Welcome {{user.username}}!</h3>
+    <p class="text-dark">You are now logged in.</p>
+    <p class="text-dark">Enjoy this wonderful app!</p>
   </div>
+ 
 
-  <div>
-   <ol> 
-    <li>
-      {{#each products}}
-      {{> product-info this}}
-      <a href="/api/products/{{this.id}}" >Comment or upvote on this post!</a>
+  <div class="mt-3">
+   <ul class="list-group row align-items-center"> 
+    {{#each products}}
+    <li class="list-group-item bg-light">
+      {{> product-info}}
+      <a href="/api/products/{{this.id}}" class="btn bg-dark text-white">Comment or upvote on this post!</a>
     </li>
       <br / >
       <br / >
+      {{> comments products.comments}}
     {{/each}}
-  </ol>
+   </ul>
   </div>
 </main>
 

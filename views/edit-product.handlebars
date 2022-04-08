@@ -1,11 +1,14 @@
-<article>
-  <a href="/profile"> &larr; Back to profile</a>
-  <h2>
+<article class="container">
+  <h3>
     Edit Product
-  </h2>
-  <form class="edit-product-form">
-    <div>
-      <label for="product-title">Title</label>
+  </h3>
+  <a
+    href="/profile"
+    class="btn bg-dark text-white m-1 justify-content-center align-items-center"
+  > &larr; Back to profile</a>
+  <form class="edit-product-form flex column bg-light border rounded">
+    <div class="flex column m1">
+      <label for="product-title" class="text-dark">Title</label>
       <input
         name="edit-product-title"
         id="product-title"
@@ -13,8 +16,8 @@
         value="{{product.title}}"
       />
     </div>
-    <div>
-      <label for="product-description">Description</label>
+    <div class="flex column m1">
+      <label for="product-description" class="text-dark">Description</label>
       <input
         name="edit-product-description"
         id="product-description"
@@ -22,8 +25,8 @@
         value="{{product.description}}"
       />
     </div>
-    <div>
-      <label for="product-price">Price</label>
+    <div class="flex column m1">
+      <label for="product-price" class="text-dark">Price</label>
       <input
         name="edit-product-price"
         id="product-price"
@@ -35,11 +38,20 @@
       <label for='img'>Select Image to Upload</label>
       <input type='file' id='img' name='edit-product-img' accept='image/*' capture='environment' meta_user={{product.user_id}} {{!-- value={{product.img_link}} --}}/>
     </div>
-    <button type="submit" class="save-product-btn">Save product</button>
-    <button type="button" class="delete-product-btn">Delete product</button>
+    <div class="mt-1">
+      <button type="submit" class="save-product-btn bg-dark text-white m-1">Save
+        product</button>
+      <button
+        type="button"
+        class="delete-product-btn bg-dark text-white m-1"
+      >Delete product</button>
+
+    </div>
+
   </form>
 </article>
 <form class="comment-form">
 </form>
 <script src="/js/delete-product.js"></script>
 <script type="module" src="/js/edit-product.js"></script>
+<script src="/js/logout.js"></script>

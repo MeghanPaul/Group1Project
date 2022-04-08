@@ -1,10 +1,10 @@
 import express from 'express';
 let router = express.Router();
-// const withAuth = require("../utils/auth");
+import withAuth from '../utils/auth.js';
 import Product from '../models/Product.js';
-// const sequelize = require("../config/connection");
+import sequelize from '../config/connection.js';
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Product.findAll({
     where: {
       user_id: req.session.user.id,
@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
   })
     .then((dbPostData) => {
       const products = dbPostData.map((post) => post.get({ plain: true }));
-      res.render("profile", { products });
+      res.render("profile", { products, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/edit/:id", (req, res) => {
+router.get("/edit/:id", withAuth, (req, res) => {
   Product.findByPk(req.params.id, {
     attributes: ["title", "description", "price", "img_link","user_id"],
   })
@@ -31,6 +31,7 @@ router.get("/edit/:id", (req, res) => {
 
         res.render("edit-product", {
           product,
+          loggedIn: true,
         });
       } else {
         res.status(404).end();

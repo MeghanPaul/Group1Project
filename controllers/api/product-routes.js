@@ -11,28 +11,33 @@ import { uploadImg } from "../../utils/image-storage.js";
 router.get("/", (req, res) => {
   Product.findAll({
     attributes: ["id", "title", "description", "price", "img_link"],
-    includes: {
+    include: {
       model: Comment,
-      attributes: ["id", "text", "post_id", "user_id", "created_at"],
+      attributes: ["id", "text", "user_id", "product_id", "created_at"],
     },
   })
     .then((dbProductData) => {
       const products = dbProductData.map((product) =>
         product.get({ plain: true })
       );
-      res.render("home", { products });
+      res.render("home", { products, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
+
 router.get("/:id", (req, res) => {
   Product.findOne({
     where: {
       id: req.params.id,
     },
     attributes: ["id", "title", "description", "price", "img_link"],
+    include: {
+      model: Comment,
+      attributes: ["id", "text", "user_id", "product_id", "created_at"],
+    },
   })
     .then((dbProductData) => {
       if (!dbProductData) {
@@ -40,7 +45,7 @@ router.get("/:id", (req, res) => {
         return;
       }
       const products = dbProductData.get({ plain: true });
-      res.render("single-page", { products });
+      res.render("single-page", { products, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);

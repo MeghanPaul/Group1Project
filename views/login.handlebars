@@ -1,12 +1,12 @@
-<main class='card'>
-    <div class='tab'>
-        <button class="tablinks" onclick="openForm(event, 'Login')">Login</button>
-        <button class="tablinks" onclick="openForm(event, 'SignUp')">Sign Up</button>
+<main class='container justify-content-center'>
+    <div class='row justify-content-center mb-2'>
+        <button class="tablinks bg-dark mr-1 col-3" onclick="openForm(event, 'Login')">Login</button>
+        <button class="tablinks bg-dark ml-1 col-3" onclick="openForm(event, 'SignUp')">Sign Up</button>
     </div>
 
     <!-- Login Tab -->
-    <div id="Login" class='w50 tabcontent'>
-        <form class='login-form grow1'>
+    <div id="Login" class='tabcontent justify-content-center'>
+        <form class='login-form grow1 bg-light border border-dark-50'>
             <div class='flex column'>
                 <div class='flex column m1'>
                     <label htmlFor='email'>Email</label>
@@ -17,15 +17,15 @@
                     <input type='password' name='password' class='input' id='password-login'/>
                 </div>
             <div class='m1'>
-                <button type='submit' class='btn bg-blue white p1 rounded'>Submit</button>
+                <button type='submit' class='btn bg-dark text-white p1 rounded'>Submit</button>
             </div>
             </div>
         </form>
     </div>
 
     <!-- Sign Up Tab -->
-    <div id="SignUp" class='w50 tabcontent'>
-        <form class='signup-form grow1'>
+    <div id="SignUp" class='tabcontent justify-content-center'>
+        <form class='signup-form grow1 bg-light border border-dark-50'>
             <div class='flex column'>
                 <div class='flex column m1'>
                     <label htmlFor='username'>Username</label>
@@ -52,7 +52,7 @@
                     <input type='password' name='reenter' class='input' id='password-signup2'/>
                 </div>
             <div class='m1'>
-                <button type='submit' class='btn bg-blue white p1 rounded'>Submit</button>
+                <button type='submit' class='btn bg-dark text-white p1 rounded'>Submit</button>
             </div>
             </div>
         </form>
