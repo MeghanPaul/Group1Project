@@ -2,7 +2,7 @@ const router = require("express").Router();
 const withAuth = require("../utils/auth");
 const { Product, Comment } = require("../models");
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Product.findAll({
     attributes: ["id", "title", "description", "price", "img_link"],
     include: {
@@ -14,15 +14,12 @@ router.get("/", (req, res) => {
       const products = dbProductData.map((product) =>
         product.get({ plain: true })
       );
-      res.render("home", { products });
+      res.render("home", { products, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
-});
-router.get("/", withAuth, (req, res) => {
-  res.render("home", { user: req.session.user });
 });
 
 router.get("/login", (req, res) => {
