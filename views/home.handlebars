@@ -1,18 +1,17 @@
 <main>
-
-  <div class="w100 flex column align-items-center">
+  <div class="container-fluid flex column align-items-center">
     <h3>Welcome {{user.username}}!</h3>
     <p class="text-dark">You are now logged in.</p>
     <p class="text-dark">Enjoy this wonderful app!</p>
   </div>
  
 
-  <div>
-   <ul class="list-group"> 
+  <div class="mt-3">
+   <ul class="list-group row align-items-center"> 
     {{#each products}}
-    <li class="list-group-item">
+    <li class="list-group-item bg-light">
       {{> product-info}}
-      <a href="/api/products/{{this.id}}" >Comment or upvote on this post!</a>
+      <a href="/api/products/{{this.id}}" class="btn bg-dark text-white">Comment or upvote on this post!</a>
     </li>
       <br / >
       <br / >

@@ -12,34 +12,36 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
 
-  <body>
-    <nav class="row align-items-center bg-light border border-dark">
-      <a href="/" class="col-8 pl-4 h2 text-dark text-decoration-none">Shop</a>
+<body>
+  <nav class="container-fluid">
+    <div class="row align-items-center bg-light border-bottom border-dark">
+      <a href="/" class="col-6 col-md-8 pl-4 h2 text-dark text-decoration-none">Shop</a>
       {{#if loggedIn}}
-        <div class="col-2 align-items-center">
+        <div class="col col-md-2 align-items-center text-center">
           <a
             href="/profile"
             class="badge-light text-decoration-none text-dark"
           >Profile</a>
         </div>
       {{/if}}
-      <div class="col-2">
+      <div class="col col-md-2 text-center">
         {{#if loggedIn}}
-          <button id="logout" class="badge-light text-dark">Logout</button>
-        {{else}}
-          <a href="/login" class="badge-light text-dark">Login/SignUp</a>
+        <button id="logout" class="badge-light text-dark">Logout</button>
+        {{else}}  
+        <a href="/login" class="badge-light text-dark">Login/SignUp</a>
         {{/if}}
       </div>
-    </nav>
-    <div class="container-fluid">
-      <header class="row align-items-center justify-content-center">
-        <h1 class="text-dark">Let's Shop</h1>
-        <img src="/images/log.png" />
-      </header>
     </div>
-    <div class="container-fluid">
-      {{{body}}}
-    </div>
+  </nav>
+  <div class='container-fluid'>
+    <header class="row align-items-center justify-content-center">
+      <h1 class="text-dark">Let's Shop</h1>
+      <img src='/images/log.png' />
+    </header>
+  </div>
+  <div class="container-fluid">
+    {{{body}}}
+  </div>
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
