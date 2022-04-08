@@ -1,13 +1,13 @@
-{{> product-info products}}
+{{> product-info products}} 
 
   <form class="comment-form">
-    <div>
+    <div class="mt-2">
       <textarea name="comment-body"></textarea>
     </div>
 
     <div>
-      <button type="submit">add comment</button>
-      <button type="button" class="upvote-btn">upvote</button>
+      <button type="submit" class="btn bg-dark text-white">add comment</button>
+      <button type="button" class="upvote-btn btn bg-dark text-white">upvote</button>
     </div>
   </form>
   {{> comments products.comments}}

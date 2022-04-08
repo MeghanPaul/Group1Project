@@ -9,18 +9,21 @@
 </head>
 
 <body>
-  <nav class="row align-items-center bg-light border border-dark"> 
-    <a href="/" class="col-8 pl-4 h2 text-dark text-decoration-none">Shop</a>
-    <div class="col-2 align-items-center">
-      <a href="/profile" class="badge-light text-decoration-none text-dark">Profile</a>
+  <nav class="container-fluid">
+    <div class="row align-items-center bg-light border-bottom border-dark">
+      <a href="/" class="col-6 col-md-8 pl-4 h2 text-dark text-decoration-none">Shop</a>
+      <div class="col col-md-2 align-items-center text-center">
+        <a href="/profile" class="badge-light text-decoration-none text-dark">Profile</a>
+      </div>
+      <div class="col col-md-2 text-center">
+        {{#if loggedIn}}
+        <button id="logout" class="badge-light text-dark">Logout</button>
+        {{else}}  
+        <a href="/login" class="badge-light text-dark">Login/SignUp</a>
+        {{/if}}
+      </div>
     </div>
-    <div class="col-2">
-      {{#if loggedIn}}
-      <button id="logout" class="badge-light text-dark">Logout</button>
-      {{else}}  
-      <a href="/login" class="badge-light text-dark">Login/SignUp</a>
-      {{/if}}
-    </div>
+    
   </nav>
   <div class='container-fluid'>
     <header class="row align-items-center justify-content-center">

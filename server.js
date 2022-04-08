@@ -6,10 +6,10 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // handlebars and helper variables
+const helpers = require("./utils/helpers");
 const exphbs = require("express-handlebars");
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
 require("dotenv").config();
-// const helpers = require('./utils/helpers');
 
 // sequelize and session variables
 const sequelize = require("./config/connection");

@@ -53,7 +53,7 @@
     <h3>Your products</h3>
     <ul class="list-group">
       {{#each products}}
-      <li class="list-group-item bg-light">
+      <li class="list-group-item bg-light mb-2">
         {{> product-info this}}
         <a href="/profile/edit/{{this.id}}" class="edit-link btn bg-dark text-white mt-2">Edit post</a>
       </li>
