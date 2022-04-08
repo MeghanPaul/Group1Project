@@ -2,9 +2,12 @@
   <h3>
     Edit Product
   </h3>
-  <a href="/profile" class="btn bg-dark text-white m-1 justify-content-center align-items-center"> &larr; Back to profile</a>
+  <a
+    href="/profile"
+    class="btn bg-dark text-white m-1 justify-content-center align-items-center"
+  > &larr; Back to profile</a>
   <form class="edit-product-form flex column bg-light border rounded">
-    <div class='flex column m1'>
+    <div class="flex column m1">
       <label for="product-title" class="text-dark">Title</label>
       <input
         name="edit-product-title"
@@ -13,7 +16,7 @@
         value="{{product.title}}"
       />
     </div>
-    <div class='flex column m1'>
+    <div class="flex column m1">
       <label for="product-description" class="text-dark">Description</label>
       <input
         name="edit-product-description"
@@ -22,7 +25,7 @@
         value="{{product.description}}"
       />
     </div>
-    <div class='flex column m1'>
+    <div class="flex column m1">
       <label for="product-price" class="text-dark">Price</label>
       <input
         name="edit-product-price"
@@ -31,7 +34,7 @@
         value="{{product.price}}"
       />
     </div>
-    <div class='flex column m1'>
+    <div class="flex column m1">
       <label for="product-img_link" class="text-dark">Image Link</label>
       <input
         name="edit-product-img_link"
@@ -40,15 +43,20 @@
         value="{{product.img_link}}"
       />
     </div>
-    <div class='mt-1'>
-      <button type="submit" class="save-product-btn bg-dark text-white m-1">Save product</button>
-      <button type="button" class="delete-product-btn bg-dark text-white m-1">Delete product</button>
-      
+    <div class="mt-1">
+      <button type="submit" class="save-product-btn bg-dark text-white m-1">Save
+        product</button>
+      <button
+        type="button"
+        class="delete-product-btn bg-dark text-white m-1"
+      >Delete product</button>
+
     </div>
-      
+
   </form>
 </article>
 <form class="comment-form">
 </form>
 <script src="/js/delete-product.js"></script>
 <script src="/js/edit-product.js"></script>
+<script src="/js/logout.js"></script>

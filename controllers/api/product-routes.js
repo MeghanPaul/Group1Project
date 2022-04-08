@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
       const products = dbProductData.map((product) =>
         product.get({ plain: true })
       );
-      res.render("home", { products });
+      res.render("home", { products, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -43,7 +43,7 @@ router.get("/:id", (req, res) => {
         return;
       }
       const products = dbProductData.get({ plain: true });
-      res.render("single-page", { products });
+      res.render("single-page", { products, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);

@@ -1,6 +1,7 @@
 const logoutBtn = document.getElementById("logout");
 
 const handleLogout = async (event) => {
+  console.log("try to logout");
   event.preventDefault();
 
   const response = await fetch("/api/users/logout", {
