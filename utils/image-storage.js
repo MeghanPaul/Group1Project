@@ -6,27 +6,42 @@ import {
   ref,
   uploadBytesResumable,
   getDownloadURL,
+  uploadBytes,
 } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  //databaseURL: process.env.FIREBASE_DB_URL,
   storageBucket: process.env.FIREBASE_STORAGE_URL,
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
 const storage = getStorage(firebaseApp);
 
-const storageRef = ref(storage);
-
 export async function uploadImg(user, title, file) {
   const filePath = `${user}/${title}`;
-  const imgRef = ref(storageRef, filePath);
-  const uploadTask = uploadBytesResumable(imgRef, file);
+  const imgRef = ref(storage, filePath);
+  //const uploadTask = uploadBytesResumable(imgRef, file);
   console.log("firebase file path: " + filePath);
 
-  uploadTask.on(
+  uploadBytes(imgRef, file).then((snapshot)=> {
+    console.log('Uploaded file');
+    console.log(snapshot);
+  });
+
+  const downloadURL = new Promise((res,rej) => {
+    res(getDownloadUrl(uploadTask.snapshot.ref));
+  });
+
+  downloadURL
+  .then((url)=>{
+    console.log("File stored at " + url);
+    return(url);
+  });
+
+  /* 
+    //#1 attempt from Firebase docs
+    uploadTask.on(
     "state_changed",
     (snapshot) => {
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -69,7 +84,7 @@ export async function uploadImg(user, title, file) {
         return(downloadURL);
       });
     }
-  );
+  );*/
 }
 
 /* <label for='img'>Select Image to Upload</label>

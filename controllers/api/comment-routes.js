@@ -1,5 +1,6 @@
-const router = require("express").Router();
-const { Comment } = require("../../models");
+import express from 'express';
+let router = express.Router();
+import Comment from '../../models/Comment.js';
 
 router.get("/", (req, res) => {
   Comment.findAll({
@@ -28,4 +29,4 @@ router.post("/", (req, res) => {
   }
 });
 
-module.exports = router;
+export {router as default};

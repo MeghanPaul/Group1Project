@@ -4,7 +4,6 @@ import path from 'path';
 import routes from './controllers/index.js'
 const app = express();
 const PORT = process.env.PORT || 3001;
-const helpers = require("./utils/helpers");
 
 // handlebars and helper variables
 import exphbs from 'express-handlebars';

@@ -2,14 +2,15 @@ import express from 'express';
 let router = express.Router();
 import withAuth from '../utils/auth.js';
 import Product from '../models/Product.js';
+import Comment from '../models/Comment.js';
 
 router.get("/", withAuth, (req, res) => {
   Product.findAll({
     attributes: ["id", "title", "description", "price", "img_link"],
-    include: {
+    /* include: {
       model: Comment,
       attributes: ["id", "text", "user_id", "product_id", "created_at"],
-    },
+    }, */
   })
     .then((dbProductData) => {
       const products = dbProductData.map((product) =>

@@ -2,12 +2,12 @@ import Sequelize from 'sequelize';
 import dotenv from 'dotenv';
 dotenv.config();
 
-let sequelize;
+let sql;
 
 if (process.env.JAWSDB_URL) {
-  sequelize = new Sequelize(process.env.JAWSDB_URL);
+  sql = new Sequelize(process.env.JAWSDB_URL);
 } else {
-  sequelize = new Sequelize(
+  sql = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASSWORD,
@@ -20,4 +20,4 @@ if (process.env.JAWSDB_URL) {
   );
 }
 
-export {sequelize as default};
+export {sql as default};

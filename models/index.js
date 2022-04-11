@@ -1,8 +1,8 @@
-const User = require('./User');
-const Post = require('./Post');
-const Comment = require('./Comment');
-const Vote = require('./Vote');
-const Product = require('./Product');
+import User from './User.js';
+import Post from './Post.js';
+import Comment from './Comment.js';
+import Vote from './Vote.js';
+import Product from './Product.js';
 
 // associations
 User.hasMany(Post, {
@@ -65,4 +65,4 @@ Product.belongsTo(User, {
     foreignKey: 'product_id'
 });
 
-module.exports = { User, Post, Comment, Vote, Product };
+export { User, Post, Comment, Vote, Product }

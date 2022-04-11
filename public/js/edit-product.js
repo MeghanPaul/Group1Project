@@ -3,26 +3,32 @@ async function editProductHandler(event) {
   const title = document
     .querySelector('input[name="edit-product-title"]')
     .value.trim();
+  console.log('Title: ' + title);
   const description = document
     .querySelector('input[name="edit-product-description"]')
     .value.trim();
   const price = document
     .querySelector('input[name="edit-product-price"]')
     .value.trim();
-  const file = document.querySelector('input[name="edit-product-img"]').value;
+  const file = document.querySelector('input[name="edit-product-img"]').files[0];
+  console.log('File: ' + file);
   const userId = document.querySelector('input[name="edit-product-img"]').getAttribute('meta_user');
+  console.log('User ID: ' + userId);
 
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
 
-  const img_link = await fetch(`api/products/image`, {
+  const img_link = await fetch(`/api/products/image`, {
     method: "POST",
     body: JSON.stringify({
       file,
       userId,
       title
-    })
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    }
   });
 
   const response = await fetch(`/api/products/${id}`, {
@@ -35,7 +41,7 @@ async function editProductHandler(event) {
     }),
     headers: {
       "Content-Type": "application/json",
-    },
+    }
   });
 
   if (response.ok) {

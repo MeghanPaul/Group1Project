@@ -2,11 +2,10 @@ import express from "express";
 let router = express.Router();
 import withAuth from "../../utils/auth.js";
 
-//Theorhetical spaceholders for product model
 import Comment from "../../models/Comment.js";
 import Product from "../../models/Product.js";
-import sequelize from "sequelize";
 import { uploadImg } from "../../utils/image-storage.js";
+
 //GET for the products homepage
 router.get("/", (req, res) => {
   Product.findAll({
@@ -115,6 +114,7 @@ router.post("/", withAuth, (req, res) => {
 });
 
 router.post("/image", withAuth, (req, res) => {
+  console.log('User ID: ' + req.body.userId + ' Title: ' + req.body.title + ' File: ' + req.body.file);
   uploadImg(req.body.userId, req.body.title, req.body.file)
     .then((img_link) => {
       res.json(img_link);
