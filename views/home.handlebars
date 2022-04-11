@@ -13,9 +13,9 @@
       {{> product-info}}
       <a href="/api/products/{{this.id}}" class="btn bg-dark text-white">Comment or upvote on this post!</a>
     </li>
+        {{> comments products.comments}}
       <br / >
       <br / >
-      {{> comments products.comments}}
     {{/each}}
    </ul>
   </div>
