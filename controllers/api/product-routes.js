@@ -25,6 +25,10 @@ router.get("/", (req, res) => {
     include: {
       model: Comment,
       attributes: ["id", "text", "user_id", "product_id", "created_at"],
+      include: {
+        model: User,
+        attributes: ["username"],
+      },
     },
   })
     .then((dbProductData) => {
@@ -45,7 +49,19 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "description", "price", "img_link"],
+    attributes: [
+      "id",
+      "title",
+      "description",
+      "price",
+      "img_link",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM vote WHERE product.id = vote.product_id)"
+        ),
+        "vote_count",
+      ],
+    ],
     include: {
       model: Comment,
       attributes: ["id", "text", "user_id", "product_id", "created_at"],
