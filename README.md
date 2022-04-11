@@ -14,7 +14,7 @@ Shop is a platform for creative and entrepreneurial people to come together and 
 
 ## **Installation**
 
-To use our website, simply head over to [Shop](heroku) and create an account to begin posting!  If you would like to install shop locally, you can clone the code from the GitHub repository at [Shop](https://github.com/MeghanPaul/Group1Project).  After cloning the code you will need to install the required packages from the package.json file.
+To use our website, simply head over to [Shop](https://peaceful-cove-22084.herokuapp.com/) and create an account to begin posting!  If you would like to install shop locally, you can clone the code from the GitHub repository at [Shop](https://github.com/MeghanPaul/Group1Project).  After cloning the code you will need to install the required packages from the package.json file.
 
 ## **Usage**
 
