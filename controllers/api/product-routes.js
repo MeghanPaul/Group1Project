@@ -2,23 +2,41 @@ const router = require("express").Router();
 const withAuth = require("../../utils/auth");
 
 //Theorhetical spaceholders for product model
-const { Product, Comment } = require("../../models");
-const sequelize = require("sequelize");
+const { Product, Comment, User, Vote } = require("../../models");
+const sequelize = require("../../config/connection");
 
 //GET for the products homepage
 router.get("/", (req, res) => {
   Product.findAll({
-    attributes: ["id", "title", "description", "price", "img_link"],
+    attributes: [
+      "id",
+      "title",
+      "description",
+      "price",
+      "img_link",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM vote WHERE product.id = vote.product_id)"
+        ),
+        "vote_count",
+      ],
+    ],
+
     include: {
       model: Comment,
       attributes: ["id", "text", "user_id", "product_id", "created_at"],
+      include: {
+        model: User,
+        attributes: ["username"],
+      },
     },
   })
     .then((dbProductData) => {
-      const products = dbProductData.map((product) =>
-        product.get({ plain: true })
-      );
-      res.render("home", { products, loggedIn: true });
+      res.json(dbProductData);
+      // const products = dbProductData.map((product) =>
+      //   product.get({ plain: true })
+      // );
+      // res.render("home", { products, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -31,7 +49,19 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "description", "price", "img_link"],
+    attributes: [
+      "id",
+      "title",
+      "description",
+      "price",
+      "img_link",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM vote WHERE product.id = vote.product_id)"
+        ),
+        "vote_count",
+      ],
+    ],
     include: {
       model: Comment,
       attributes: ["id", "text", "user_id", "product_id", "created_at"],
@@ -110,6 +140,25 @@ router.post("/", withAuth, (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.put("/upvote", (req, res) => {
+  if (req.session) {
+    Product.upvote(
+      {
+        ...req.body,
+        user_id: req.session.user_id,
+      },
+      { Vote, Comment, User }
+    )
+      .then((updatedVoteData) => {
+        res.json(updatedVoteData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
 });
 
 router.put("/:id", withAuth, (req, res) => {
